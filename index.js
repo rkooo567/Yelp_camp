@@ -12,6 +12,12 @@ var bodyParser = require('body-parser');
 var campgrounds = [
 	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
 	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
+	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"},
+	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
+	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
+	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"},
+	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
+	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
 	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"}
 ];
 
