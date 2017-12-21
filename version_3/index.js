@@ -7,52 +7,18 @@ var express = require('express');
 var util = require('./util/util');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var seedDB = require("./seeds");
 
-/* var campgrounds = [
-	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
-	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
-	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"},
-	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
-	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
-	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"},
-	{name: "Salmon Creek", image: "http://www.mbpost.com/images/original/271559.jpg"},
-	{name: "Granite Hill", image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg"},
-	{name: "Diablo Mountain", image: "https://upload.wikimedia.org/wikipedia/commons/6/62/View_of_Mount_Diablo_and_CA_Highway_24_from_Lafayette_Heights.jpg"}
-];*/
+seedDB();
 
 // object
 var app = express();
+var Campground = require("./models/campground")
 
 // setup
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect('mongodb://localhost:/yelp_camp');
-
-// Schema setup
-var campgroundSchema = new mongoose.Schema({
-	name: String,
-	image: String,
-	description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
-
-// tryout
-/*Campground.create(
-	{
-		name: "Granite Hill", 
-		image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Miniature_Granite_Quarry%2C_Table_Hill_-_geograph.org.uk_-_252959.jpg",
-		description: "This is a huge Granite Hill. No bathroom, no water, and beautiful granite."
-	}, 
-	function (err, campground){
-		if (err){
-			console.error(err);
-		} else {
-			console.log("Newly created campground: ");
-			console.log(campground);
-		}
-	}
-)*/
+mongoose.connect('mongodb://localhost:/yelp_camp_v3');
 
 // routing
 
@@ -104,11 +70,11 @@ app.get("/campgrounds/new", function(req, res){
 app.get("/campgrounds/:id", function(req,res){
 	var id = req.params.id;
 	util.logRequestMessage("/campgrounds/" + String(id), "GET");
-	Campground.findById(id, function(err, foundCampground){
+	Campground.findById(id).populate("comments").exec(function(err, foundCampground){
 		if (err){
 			console.error(err);
 		} else {
-			res.render("show.ejs", {campground: foundCampground});
+			res.render("show", {campground: foundCampground});
 		}
 	});
 });
