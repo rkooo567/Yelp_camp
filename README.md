@@ -1,6 +1,6 @@
 <strong># Yelp_camp_Udemy_Course</strong>
 
-The full stack web page that displays the information of campsites. Implemented RESTful routing. 
+The <strong>full stack web page</strong> that displays the information of campsites. Implemented <strong>RESTful</strong> routing. 
 
-Front end: ejs template, css, bootstrap, html
-Back end: NodeJS, ExpressJS framework, passport authentication, mongoDB database
+<strong><i>Front end</i></strong>: ejs template, css, bootstrap, html <br />
+<strong><i>Back end</i></strong>: NodeJS, ExpressJS framework, passport authentication, mongoDB database
